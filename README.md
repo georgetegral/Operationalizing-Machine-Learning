@@ -152,6 +152,31 @@ To benchmark the endpoint we have to run the benchmark.sh file, we have to add t
 ![Apache Benchmark](images/sc14-apache-benchmark.png)
 
 **Create, publish and consume a Pipeline**
+In the final part of the project we create a Pipeline for this entire process. For this we use the Jupyter Notebook named aml-pipelines-with-automated-machine-learning-step.ipynb, and we have to change the following fields in our code to use the same resources as we did in the previous steps:
+
+```Python
+experiment_name = 'automl-experiment'
+amlcompute_cluster_name = "compute-standard"
+key = "Bank-marketing"
+```
+
+In this screenshot we have 2 pipeline runs, the one that says "Run 102" is an AutoML Model that took about 34 minutes to run. The second one that says "Run 1" is an experiment with a pipeline endpoint that uses the model that we just mentioned.
+![Pipeline runs](images/sc15-pipeline-runs.png)
+
+In this screenshot we can see the Step Runs widget to get relevant data about our current run.
+![Pipeline runs](images/sc19-step-runs.png)
+
+Here we can see the complete pipeline run of the "Run 102".
+![Pipeline AutoML Experiment](images/sc18-pipeline-automl-experiment.png)
+
+Here we can see the pipeline endpoint, and that it appears as "Active" on the Status column.
+![Pipeline endpoint](images/sc16-pipeline-endpoint.png)
+
+Now, we can see an overview of the pipeline, and we can see how it gets data from the Bank Marketing dataset and uses it in the AutoML Module.
+![Published Pipeline Overview](images/sc17-pipeline-bankmarketing-train.png)
+
+Finally, we can see in this screenshot all the experiments as completed.
+![Published Pipeline Overview](images/sc20-ml-home.png)
 
 ## Screen Recording
 Link to the screen recording of the project in action:
@@ -166,7 +191,7 @@ https://youtu.be/vJ0Rv67EAGk
 
 - Also, because the virtual environment did not allow us to do the step of  'Enable security and authentication', it was not practiced, for a future work or for a real life project this must be done.
 
--Even though accuracy was not an objective in this project, the accuracy of the model created can be made better with more training time.
+- Even though accuracy was not an objective in this project, the accuracy of the model created can be made better with more training time.
 
 ## References
 - [Bank marketing dataset](http://archive.ics.uci.edu/ml/datasets/Bank+Marketing)
