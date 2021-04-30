@@ -83,11 +83,20 @@ The next step is to create a compute cluster with the following configuration:
 - Standard_DS12_v2 for virtual machine size.
 - 1 for minimum number of nodes
 
-![Compute Cluster](sc1-compute-cluster.png)
+This cluster is named "compute-standard"
+![Compute Cluster](images/sc1-compute-cluster.png)
 **Create AutoML Experiment**
+Now we have to create an AutoML experiment with the Bank Marketing dataset and the following configuration:
+- Classification.
+- Explain best model.
+- Exit criterion: 1 hour.
+- Concurrency: 5.
 
+Here the experiment is completed
+![AutoML experiment completed](images/sc2-automl-completed.png)
 **Run Experiment with Clasification**
 
+![AutoML experiment best run](images/sc4-best-model.png)
 **Select Best Model**
 
 **Deploy Best Model**
