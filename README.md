@@ -92,22 +92,64 @@ Now we have to create an AutoML experiment with the Bank Marketing dataset and t
 - Exit criterion: 1 hour.
 - Concurrency: 5.
 
+**Run Experiment with Clasification**
 Here the experiment is completed
 ![AutoML experiment completed](images/sc2-automl-completed.png)
-**Run Experiment with Clasification**
 
-![AutoML experiment best run](images/sc4-best-model.png)
 **Select Best Model**
+The experiment took about 32 minutes to complete, here we can see that the Voting Ensemble model is the most accurate with an accuracy of 91.866%
+![AutoML experiment best run](images/sc3-best-model.png)
 
 **Deploy Best Model**
+Now that we have selected the best model, we can deploy it as an endpoint.
+![Deploying best AutoML model](images/sc4-deploying-best-automl-model.png)
+
+Then, it is deployed, but Application Insights is not configured, so we will do that in the next step.
+![Model deployed 1](images/sc5-best-automl-model-deployed.png)
+
+![Model deployed 2](images/sc6-best-automl-model-noinsights.png)
 
 **Enable Application Insights**
+To enable Application Insights we have to run the logs.py file provided in the project with the name of the endpoint that we are going to enable the App Insights, and we have to get the config.json file from Azure Machine Learning Studio.
+
+When we run the logs.py file we can get important logs, which are available at runtime or in Azure Machine Learning Studio, this screenshot is from the Deployment Logs tab in Azure, which has the same data as the python logs obtained when the file is run.
+![Model deployment logs](images/sc7-best-automl-model-logs.png)
+
+We now have App Insights enabled in our endpoint.
+![Model App Insights enabled](images/sc8-best-automl-model-appinsights.png)
+
+The next step is to create the Swagger documentation, we are going to download the Swagger .json file from the SWAGGER URI located in the endpoint details.
 
 **Create Swagger Documentation**
+To start the swagger server we are going to need to download the swagger.json file, then we need to run the serve.py file to expose the swagger.json file to be picked up by swagger.
+
+Now we have to edit the port in the swagger.sh file, in specific this part
+```Shell
+docker run -p 80:8080 swaggerapi/swagger-ui
+```
+We have to change the port from 80 to another port, preferably above 9000, in my case I used 9001. Once that change is done, we run the swagger.sh file.
+![Swagger logs](images/sc12-swagger-logs.png)
+
+Once we enter to the swagger site in localhost:9001, we have to input the swagger.json file location, which is in http://localhost:8000/swagger.json, once we hit "explore", we can see the following data.
+![Swagger main page](images/sc9-swagger.png)
+
+We can see the required parameters for the endpoint calling
+![Swagger api contents](images/sc10-swagger-api-contents.png)
+
+We can see the posible responses from the endpoint
+![Swagger api responses](images/sc11-swagger-api-responses.png)
+
+Once this is done we can consume the endpoint
 
 **Consume Endpoint**
+To consume the endpoint we have to run the endpoint.py file, and input our endpoint URL and the auth key, once we do that and we run the file we will see a json response from the endpoint.
+![Endpoint consuming](images/sc13-consuming-endpoint.png)
+
+The "result" key indicates a successful endpoint consuming. Now we can benchmark the endpoint to get some useful metrics.
 
 **Benchmark Model with Apache Benchmark**
+To benchmark the endpoint we have to run the benchmark.sh file, we have to add the authentication key and the endpoint url. Once we do that and we run the file, we will get some useful metrics of the performance of our endpoint.
+![Apache Benchmark](images/sc14-apache-benchmark.png)
 
 **Create, publish and consume a Pipeline**
 
