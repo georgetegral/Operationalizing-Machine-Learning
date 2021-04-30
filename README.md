@@ -68,9 +68,9 @@ Output variable (desired target):
 
 21 - y - has the client subscribed a term deposit? (binary: 'yes','no')
 
-
 ## Architectural Diagram
-*TODO*: Provide an architectual diagram of the project and give an introduction of each step.
+The diagram below shows a rough overview of the project and the steps it followed.
+![Diagram](images/diagram.png)
 
 ## Key Steps
 *TODO*: Write a short discription of the key steps. Remeber to include all the screencasts required to demonstrate key steps. 
