@@ -75,10 +75,12 @@ The diagram below shows a rough overview of the project and the steps it followe
 
 ## Key Steps
 **Register Dataset**
+
 The first step is to check if the Bank Marketing dataset is uploaded to Azure ML Studio, once it is uploaded we can continue.
 ![Dataset](images/sc0-bank-marketing-dataset.png)
 
 **Configure Compute Cluster**
+
 The next step is to create a compute cluster with the following configuration:
 - Standard_DS12_v2 for virtual machine size.
 - 1 for minimum number of nodes
@@ -86,6 +88,7 @@ The next step is to create a compute cluster with the following configuration:
 This cluster is named "compute-standard"
 ![Compute Cluster](images/sc1-compute-cluster.png)
 **Create AutoML Experiment**
+
 Now we have to create an AutoML experiment with the Bank Marketing dataset and the following configuration:
 - Classification.
 - Explain best model.
@@ -93,14 +96,17 @@ Now we have to create an AutoML experiment with the Bank Marketing dataset and t
 - Concurrency: 5.
 
 **Run Experiment with Clasification**
+
 Here the experiment is completed
 ![AutoML experiment completed](images/sc2-automl-completed.png)
 
 **Select Best Model**
+
 The experiment took about 32 minutes to complete, here we can see that the Voting Ensemble model is the most accurate with an accuracy of 91.866%
 ![AutoML experiment best run](images/sc3-best-model.png)
 
 **Deploy Best Model**
+
 Now that we have selected the best model, we can deploy it as an endpoint.
 ![Deploying best AutoML model](images/sc4-deploying-best-automl-model.png)
 
@@ -110,6 +116,7 @@ Then, it is deployed, but Application Insights is not configured, so we will do 
 ![Model deployed 2](images/sc6-best-automl-model-noinsights.png)
 
 **Enable Application Insights**
+
 To enable Application Insights we have to run the logs.py file provided in the project with the name of the endpoint that we are going to enable the App Insights, and we have to get the config.json file from Azure Machine Learning Studio.
 
 When we run the logs.py file we can get important logs, which are available at runtime or in Azure Machine Learning Studio, this screenshot is from the Deployment Logs tab in Azure, which has the same data as the python logs obtained when the file is run.
@@ -121,7 +128,8 @@ We now have App Insights enabled in our endpoint.
 The next step is to create the Swagger documentation, we are going to download the Swagger .json file from the SWAGGER URI located in the endpoint details.
 
 **Create Swagger Documentation**
-To start the swagger server we are going to need to download the swagger.json file, then we need to run the serve.py file to expose the swagger.json file to be picked up by swagger.
+
+o start the swagger server we are going to need to download the swagger.json file, then we need to run the serve.py file to expose the swagger.json file to be picked up by swagger.
 
 Now we have to edit the port in the swagger.sh file, in specific this part
 ```Shell
@@ -142,16 +150,19 @@ We can see the posible responses from the endpoint
 Once this is done we can consume the endpoint
 
 **Consume Endpoint**
+
 To consume the endpoint we have to run the endpoint.py file, and input our endpoint URL and the auth key, once we do that and we run the file we will see a json response from the endpoint.
 ![Endpoint consuming](images/sc13-consuming-endpoint.png)
 
 The "result" key indicates a successful endpoint consuming. Now we can benchmark the endpoint to get some useful metrics.
 
 **Benchmark Model with Apache Benchmark**
+
 To benchmark the endpoint we have to run the benchmark.sh file, we have to add the authentication key and the endpoint url. Once we do that and we run the file, we will get some useful metrics of the performance of our endpoint.
 ![Apache Benchmark](images/sc14-apache-benchmark.png)
 
 **Create, publish and consume a Pipeline**
+
 In the final part of the project we create a Pipeline for this entire process. For this we use the Jupyter Notebook named aml-pipelines-with-automated-machine-learning-step.ipynb, and we have to change the following fields in our code to use the same resources as we did in the previous steps:
 
 ```Python
