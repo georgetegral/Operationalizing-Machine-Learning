@@ -112,10 +112,19 @@ Here the experiment is completed
 **Create, publish and consume a Pipeline**
 
 ## Screen Recording
-*TODO* Provide a link to a screen recording of the project in action. Remember that the screencast should demonstrate:
+Link to the screen recording of the project in action:
+https://youtu.be/vJ0Rv67EAGk
 
 ## Future work
-*TODO (Optional):* This is where you can provide information about any standout suggestions that you have attempted.
+- The data had a class imbalance issue as shown in this screenshot:
+
+![Data imbalance](images/fu0-imbalanced-data.png)
+
+- For a better accuracy in the future the data should be balanced before model training
+
+- Also, because the virtual environment did not allow us to do the step of  'Enable security and authentication', it was not practiced, for a future work or for a real life project this must be done.
+
+-Even though accuracy was not an objective in this project, the accuracy of the model created can be made better with more training time.
 
 ## References
 - [Bank marketing dataset](http://archive.ics.uci.edu/ml/datasets/Bank+Marketing)
