@@ -6,6 +6,7 @@
 * [Architectural Diagram](#Architectural-Diagram)
 * [Key steps](#Key-Steps)
 * [Screen Recording](#Screen-Recording)
+* [Future Work](#Future-Work)
 * [References](#References)
 
 ## Overview
@@ -73,14 +74,38 @@ The diagram below shows a rough overview of the project and the steps it followe
 ![Diagram](images/diagram.png)
 
 ## Key Steps
-*TODO*: Write a short discription of the key steps. Remeber to include all the screencasts required to demonstrate key steps. 
+**Register Dataset**
+The first step is to check if the Bank Marketing dataset is uploaded to Azure ML Studio, once it is uploaded we can continue.
+![Dataset](images/sc0-bank-marketing-dataset.png)
 
-*TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
+**Configure Compute Cluster**
+The next step is to create a compute cluster with the following configuration:
+- Standard_DS12_v2 for virtual machine size.
+- 1 for minimum number of nodes
+
+![Compute Cluster](sc1-compute-cluster.png)
+**Create AutoML Experiment**
+
+**Run Experiment with Clasification**
+
+**Select Best Model**
+
+**Deploy Best Model**
+
+**Enable Application Insights**
+
+**Create Swagger Documentation**
+
+**Consume Endpoint**
+
+**Benchmark Model with Apache Benchmark**
+
+**Create, publish and consume a Pipeline**
 
 ## Screen Recording
 *TODO* Provide a link to a screen recording of the project in action. Remember that the screencast should demonstrate:
 
-## Standout Suggestions
+## Future work
 *TODO (Optional):* This is where you can provide information about any standout suggestions that you have attempted.
 
 ## References
