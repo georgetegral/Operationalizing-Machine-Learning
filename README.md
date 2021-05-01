@@ -10,11 +10,19 @@
 * [References](#References)
 
 ## Overview
-This project is part of the Udacity's Machine Learning Engineer with Microsoft Azure nanodegree, this is the second project where I create, publish and consume a Pipeline. I also deploy the pipeline as a http rest endpoint, create Swagger documentation, benchmarking with Apache.
+This project is part of the Udacity's Machine Learning Engineer with Microsoft Azure Nanodegree, this is the second project where I create, publish and consume a Pipeline. I also deploy the pipeline as a http rest endpoint, create Swagger documentation, benchmarking with Apache.
+
+The data used in this project is the same Banking Marketing Dataset used in the previous project. It belongs to a portuguese banking institution and it is related to direct marketing campaigns.
+
+The project consists of two parts:
+- The first part consists of creating a machine learning model with AutoML using Azure Machine Learning Studio, then deploying it as an endpoint, enabling logging with Application Insights, creating documentation with Swagger, consuming the endpoint and benchmarking it. The best model was created in this first part, with an accuracy of 91.866%, this was obtained by running an experiment with clasification task, using the previously mentioned dataset.
+- The second part consists of doing this same steps but with the Azure Python SDK to create, publish and consume a pipeline with a Jupyter Notebook.
+
+
 
 ## Dataset
 
-The data used in this project is the same Banking Marketing Dataset used in the previous project. It belongs to a portuguese banking institution and it is related to marketing campaigns. this dataset has the following fields:
+This dataset has the following fields:
 Input variables:
 
 **bank client data**
@@ -203,6 +211,8 @@ https://youtu.be/vJ0Rv67EAGk
 - Also, because the virtual environment did not allow us to do the step of  'Enable security and authentication', it was not practiced, for a future work or for a real life project this must be done.
 
 - Even though accuracy was not an objective in this project, the accuracy of the model created can be made better with more training time.
+
+- The accuracy can also be increased by using deep learning for the first AutoML Run.
 
 ## References
 - [Bank marketing dataset](http://archive.ics.uci.edu/ml/datasets/Bank+Marketing)
